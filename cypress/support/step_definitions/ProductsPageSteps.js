@@ -1,13 +1,9 @@
-import { BasePage } from "./BasePage";
+const { Then } = require("@badeball/cypress-cucumber-preprocessor");
+const { ProductsPage } = require("../../pageObjects/ProductsPage");
 
-const INVENTORY_CONTAINER = ".inventory_container";
-
-export class ProductsPage extends BasePage {
-  static validateVisibleInventoryContainer() {
-    this.isVisible(INVENTORY_CONTAINER);
-  }
-
-  static inventoryContainerDoesNotExist() {
-    this.doesNotExist(INVENTORY_CONTAINER);
-  }
-}
+Then(/^The inventory container is visible$/, function () {
+  ProductsPage.validateVisibleInventoryContainer();
+});
+Then(/^The inventory container does not exist$/, function () {
+  ProductsPage.inventoryContainerDoesNotExist();
+});
